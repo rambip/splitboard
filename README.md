@@ -4,9 +4,9 @@ just pcb for now
 
 ## Content:
 
-kicad files (pcb)
-arduino code
-gerber files
+ - kicad files (pcb)
+ - arduino code
+ - gerber files
 
 ## TODO:
 
