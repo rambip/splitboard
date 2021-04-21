@@ -4,5 +4,5 @@ just pcb for now
 
 ## TODO:
 
-- [] add code
-- [] add links to documentation
+- [ ] add code
+- [ ] add links to documentation
