@@ -41,7 +41,31 @@ Our keyboard supports usb and bluetooth (BLE) communication with the *hid* speci
  - 3d modeling of the entire keyboard (solidworks and printable files) -> `3d`
 
 
-## Tools:
+## 3d structure:
+
+multiple layers:
+
+- support
+
+- box
+
+- pcb
+
+- plate
+
+- switches
+
+We chose the [cherry mx brown](https://www.cherrymx.de/en/mx-original/mx-brown.html).
+
+Before buying, try to find a second-hand broken keyboard somewhere !
+
+## PCB and electronics:
+
+We used the [adafruit 32u4](https://learn.adafruit.com/adafruit-feather-32u4-bluefruit-le/overview).
+
+
+
+## Software:
 
 ### Arduino
 
@@ -62,9 +86,10 @@ find the board connected to usb (look at the *Port* path):
 `arduino-cli compile`
 `arduino-cli upload`
 
-### Solidworks
 
-### Kicad
+### Ressources:
+https://wiki.osdev.org/USB_Human_Interface_Devices
+
 
 ## TODO:
 
