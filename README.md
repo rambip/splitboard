@@ -66,6 +66,8 @@ Before buying, try to find a second-hand broken keyboard somewhere !
 
 We used the [adafruit 32u4](https://learn.adafruit.com/adafruit-feather-32u4-bluefruit-le/overview).
 
+Go check out their [github account](https://github.com/adafruit), they have a lot of cool stuff !
+
 
 
 ## Software:
