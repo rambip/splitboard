@@ -9,6 +9,9 @@ We used a lot of different technologies (solidworks for example), so you probabl
 
 But we added ressources you can use if you want to make your own !
 
+
+![3d model](img/3d_1.png)
+
 ## Description
 
 pcb + 3d-printed box + aluminium plate + brown switches + adafruit feather 32u4
