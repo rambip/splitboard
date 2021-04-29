@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 46)
+    (drawings 50)
     (tracks 1314)
     (zones 0)
     (modules 150)
@@ -6981,13 +6981,17 @@
       (net 3 GND) (solder_mask_margin 0.0508))
   )
 
+  (gr_line (start 125.73 83.82) (end 125.73 115.57) (layer Edge.Cuts) (width 0.05) (tstamp 608A541B))
+  (gr_line (start 130.175 115.57) (end 130.175 83.82) (layer Edge.Cuts) (width 0.05) (tstamp 608A5415))
+  (gr_line (start 130.175 115.57) (end 125.73 115.57) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 125.73 119.38) (end 130.175 119.38) (layer Edge.Cuts) (width 0.05))
   (gr_circle (center 52.07 86.36) (end 54.61 92.71) (layer Dwgs.User) (width 0.15))
   (gr_circle (center 90.17 142.875) (end 92.075 149.225) (layer Dwgs.User) (width 0.15))
   (gr_circle (center 109.22 86.995) (end 111.76 93.345) (layer Dwgs.User) (width 0.15))
   (gr_line (start 125.73 154.94) (end 130.175 154.94) (layer Edge.Cuts) (width 0.05) (tstamp 60087E82))
-  (gr_line (start 125.73 83.82) (end 125.73 151.765) (layer Edge.Cuts) (width 0.05) (tstamp 600872E3))
+  (gr_line (start 125.73 119.38) (end 125.73 151.765) (layer Edge.Cuts) (width 0.05) (tstamp 600872E3))
   (gr_line (start 130.175 83.82) (end 125.73 83.82) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 130.175 151.765) (end 130.175 83.82) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 130.175 151.765) (end 130.175 119.38) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 125.73 151.765) (end 130.175 151.765) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 16.51 140.97) (end 16.51 73.66) (layer Edge.Cuts) (width 0.05) (tstamp 60087169))
   (gr_line (start 225.425 154.94) (end 130.175 154.94) (layer Edge.Cuts) (width 0.05))
