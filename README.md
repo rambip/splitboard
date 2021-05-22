@@ -20,17 +20,9 @@ pcb + 3d-printed box + aluminium plate + brown switches + adafruit feather 32u4
 
 - portable
 
-- splited
-
-
-- type matrix
-
-
-- mecanical
-
+- comfortable
 
 - robust
-
 
 - usb and bluetooth
 
@@ -99,4 +91,4 @@ https://wiki.osdev.org/USB_Human_Interface_Devices
 ## TODO:
 
 - [ ] add links to documentation
-- [ ] add images
+- [ ] code
