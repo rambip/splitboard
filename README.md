@@ -18,11 +18,18 @@ pcb + 3d-printed box + aluminium plate + brown switches + adafruit feather 32u4
 
 ### Design goals:
 
-- portable
-
 - comfortable
+	Ergonomics was the first goal of this model.
+	Even if we had to make tradeoffs, the first choices (2 parts, mechanical switches, design of a new layout) were made to increase comfort.
+
+- portable
+	It is a tiny keyboard: 46 keys, measure less than 24x12 cm
+	Every key has to be reachable without moving your hands at all !
+
 
 - robust
+	I didn't broke it yet !
+	
 
 - usb and bluetooth
 
@@ -90,5 +97,6 @@ https://wiki.osdev.org/USB_Human_Interface_Devices
 
 ## TODO:
 
+- [ ] convert all 3d modeling to .step
 - [ ] add links to documentation
 - [ ] code
