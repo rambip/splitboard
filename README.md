@@ -34,22 +34,20 @@ pcb + 3d-printed box + aluminium plate + brown switches + adafruit feather 32u4
 	
 
 - usb and bluetooth
+        You can use it with any computer (mac or pc) and any modern smartphone
 
 Our keyboard supports usb and bluetooth (BLE) communication with the *hid* specification.
 
 
 ## Content:
 
- - board design, with all components (kicad and gerber files) -> `pcb`
- - arduino code -> `code`
- - 3d modeling of the entire keyboard (solidworks and printable files) -> `3d`
+ - board design, with all components (kicad and gerber files) → `pcb`
+ - ready to print STL files → `printing`
+ - 3d modeling of the entire keyboard (solidworks and .step) → `3d`
+ - arduino code for card → `code`
 
 
 ## 3d structure:
-
-multiple layers:
-
-- support
 
 - box
 
@@ -61,7 +59,7 @@ multiple layers:
 
 We chose the [cherry mx brown](https://www.cherrymx.de/en/mx-original/mx-brown.html).
 
-Before buying, try to find a second-hand broken keyboard somewhere !
+> Pro tip: Before buying, try to find a second-hand broken keyboard somewhere !
 
 ## PCB and electronics:
 
