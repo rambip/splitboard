@@ -1,0 +1,7 @@
+{
+  "cpu": {
+    "fqbn": "adafruit:avr:feather32u4",
+    "name": "Adafruit Feather 32u4",
+    "port": "serial:///dev/ttyACM0"
+  }
+}

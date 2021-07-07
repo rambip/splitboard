@@ -2,8 +2,8 @@
 
 #include "config.h"
 
-#include "Keyboard_send.h"
 #include "Keyboard_get.h"
+#include "Keyboard_send.h"
 #include "Keyboard_ble.h"
 
 void setup()
@@ -16,8 +16,10 @@ void setup()
 
 void loop()
 {
+    // store every key-press detected in the "matrix" table
     read_keys();
 
+    // empty usb-hid report that we will send to the OS
     byte hid_report[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
     // check if "change layer" key is pressed.
@@ -43,6 +45,7 @@ void loop()
     // if no layer key pressed, send chars from the default layout
     layer_to_report(_base_layer, hid_report);
 
+    // send additional modifiers (alt, super, ctrl)
     modifiers_to_report(
        matrix[MODIFIER_CTRL],
        false, // no shift: shift is a layering key

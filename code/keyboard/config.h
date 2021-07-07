@@ -1,7 +1,14 @@
+// ----------------------
+#pragma once           // do not
+#include "OS_layouts.h"// touch !
+// ----------------------
+
+
 // os settings:
 #define AZERTY
 // #define QWERTY
-#include "OS_layouts.h"
+
+
 
 /*
  _        _ __   _____  _   _ _____ 
@@ -9,6 +16,9 @@
 | |     / _ \\ V / | | | | | | | |  
 | |___ / ___ \| || |_| | |_| | | |  
 |_____/_/   \_\_| \___/ \___/  |_|  
+
+if your're looking for a key and don't know its name,
+look inside OS_layouts.h
 */
                                     
 const char _base_layer[36] PROGMEM = 
@@ -43,14 +53,16 @@ const char _num_layer[36] PROGMEM =
 
 // TODO: multimedia, macro layer (with strings)
 
-// modifiers:
-// (positions for the thumbs)
-// o    |  o  |  o  |  o  |  o  |    |  o  |  o  |  o  |  o  |    o
-//  MM  |super| alt | symb|shift|    |space| num | ctrl| fn  |  macro  
-// (MM=multimedia)
+/* modifiers:
+ (positions for the thumbs)
+| o    |  o  |  o  |  o  |  o  |    |  o  |  o  |  o  |  o  |    o   |
+|  MM  |super| alt | symb|shift|    |space| num | ctrl| fn  |  macro |
+
+ (MM=multimedia)
+*/
 
 
-// layering keys
+// layering keys (to access the corresponding layers)
 #define SYMB_LAYER 40
 #define SHIFT_LAYER 41
 #define NUM_LAYER 43
@@ -66,18 +78,3 @@ const char _num_layer[36] PROGMEM =
 #define SPACE 42
 
 
-
-
-
-// export these variables to keyboard.ino (OS_LAYOUT_MAP)
-#ifdef AZERTY
-
-#define OS_LAYOUT_MAP _azerty_map
-
-#endif
-
-#ifdef QWERTY
-
-#define OS_LAYOUT_MAP _qwerty_map
-
-#endif

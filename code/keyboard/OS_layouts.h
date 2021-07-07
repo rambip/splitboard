@@ -1,3 +1,4 @@
+#pragma once // file imported multiple times, defined one time ! 
 /*
                              _        
  ___ __ __ _ _ _  __ ___  __| |___ ___
@@ -639,4 +640,3 @@ const short _us_inter_map[256] PROGMEM = {
     0x0, // þ
     0x0, // ÿ
 };
-

@@ -1,15 +1,23 @@
-#ifndef KEYBOARD_SEND_LIB
-#define KEYBOARD_SEND_LIB
-
 #include <HID.h>
-//#include "OS_layouts.h"
+#include "OS_layouts.h"
 #include "Keyboard_get.h" // to get the global variable matrix
+#include "config.h" // to know if OS defined with azerty or qwerty
 
+// send report to usb
 #define SEND_KEYS(x) HID().SendReport(2, x, 8)
+
+#ifdef AZERTY
+#define OS_LAYOUT_MAP _azerty_map
+#endif
+
+#ifdef QWERTY
+#define OS_LAYOUT_MAP _qwerty_map
+#endif
+
 
 static const uint8_t _hidReportDescriptor[] PROGMEM = {
 
-  //  Keyboard
+  //  Define device as usb keyboard
     0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)  // 47
     0x09, 0x06,                    // USAGE (Keyboard)
     0xa1, 0x01,                    // COLLECTION (Application)
@@ -44,57 +52,10 @@ static const uint8_t _hidReportDescriptor[] PROGMEM = {
 
 void setup_hid();
 
-
-const byte _dead_grave_keys[8] = {
-    0b01000000, // right alt
-    0x0,
-    0x25, // 7
-    0, 0, 0, 0, 0,
-};
-
-const byte _dead_circumflex_keys[8] = {
-    0b00000000, // left shift
-    0x0,
-    0x2f, // [ on qwerty
-    0, 0, 0, 0, 0,
-};
-
-const byte _dead_diaeresis_keys[8] = {
-    0b00000010, // left shift
-    0x0,
-    0x2f, // [ on qwerty
-    0, 0, 0, 0, 0,
-};
-
-const byte _caps_lock_keys[8] = {
-    0b00000000,
-    0x0,
-    0x39,
-    0, 0, 0, 0, 0,
-};
-
-const byte _space_keys[8] = {
-    0b00000000,
-    0x0,
-    0x2c,
-    0, 0, 0, 0, 0,
-};
-
-const byte _release_keys[8] = {
-    0, 0, 0, 0, 0, 0, 0, 0,
-};
-
-
-// send ascii char (use to send text)
-
-void send_char(unsigned char k, bool force_rep=false);
-
-//template <class T> // char* in ram or in flash
-//void send_string(T* adress);
-
-
 void char_to_report(unsigned char k, byte report[8]);
 void layer_to_report(char* layout_for_layer, byte report[8]);
 void modifiers_to_report(bool ctrl, bool shift, bool alt, bool super, byte report[8]);
 
-#endif
+// send a string with key emulation
+template <class T> // string in ram or in flash
+void send_string(T* adress);
