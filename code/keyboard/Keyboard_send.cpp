@@ -20,8 +20,8 @@ void char_to_report(unsigned char k, byte report[8]) {
 
     byte scancode = code%0x100;
 
-    byte shift = (code & SHIFT) == SHIFT;
-    byte altgr = (code & ALTGR) == ALTGR;
+    byte shift = (code & SHIFT) != 0;
+    byte altgr = (code & ALTGR) != 0;
 
     // modifiers for current key
     report[0] |= (shift << 1);
