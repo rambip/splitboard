@@ -22,6 +22,12 @@ void loop()
     // empty usb-hid report that we will send to the OS
     byte hid_report[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
+    // space is a special key: it is the only key that is not in the "layers"
+    if (matrix[SPACE]){ // Space
+        if (matrix[SHIFT_LAYER]) char_to_report('_', hid_report);
+        else                     char_to_report(' ', hid_report);
+    }
+
     // check if "change layer" key is pressed.
     // if true, look at the keys in the layer
     if (matrix[SYMB_LAYER]) {
@@ -45,6 +51,8 @@ void loop()
     // if no layer key pressed, send chars from the default layout
     layer_to_report(_base_layer, hid_report);
 
+    // FIXME: alt+ Q (alt+maj+q)    
+
     // send additional modifiers (alt, super, ctrl)
     modifiers_to_report(
        matrix[MODIFIER_CTRL],
@@ -54,11 +62,8 @@ void loop()
        hid_report
     );
 
-    if (matrix[SPACE]){ // Space
-        char_to_report(' ', hid_report);
-    }
-
+    // send the report via usb
     SEND_KEYS(hid_report);
     // TODO: debug
-    send_keys_ble(hid_report);
+    // send_keys_ble(hid_report);
 }
