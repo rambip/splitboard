@@ -152,7 +152,7 @@ const short _azerty_map[256] PROGMEM = {
     0x21,          // '
     0x22,    // (
     0x2d,    // )
-    0x25,    // *
+    0x31,    // *
     0x2e|SHIFT,    // +
     0x10,          // ,
     0x23,    // -
@@ -177,7 +177,7 @@ const short _azerty_map[256] PROGMEM = {
     0x10|SHIFT,// ?
     //0x4...
     0x27|ALTGR,      // @
-    0x14|SHIFT,      // A
+   0x14|SHIFT,      // A
     0x05|SHIFT,      // B
     0x06|SHIFT,      // C
     0x07|SHIFT,      // D
