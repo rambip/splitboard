@@ -31,8 +31,7 @@ C_DEL ,'z','y','x','.','\'',     'k','q','g','h','f','\n',
 
 const char _shift_layer[36] PROGMEM = 
 {
-    // é maj FIXME
-'\t','B','É','P','O',0x81,      'W','V','D','L','J',C_BS,
+'\t','B','è','P','O',0x81,      'W','V','D','L','J',C_BS,
 C_ES,'A','U','I','E',';',      'C','T','S','R','N','M',
 C_DEL ,'Z','Y','X',':','\"',     'K','Q','G','H','F','\n',
 };
@@ -62,6 +61,8 @@ const char _num_layer[36] PROGMEM =
  (MM=multimedia)
 */
 
+
+// TODO: ctrl+maj ?
 
 // layering keys (to access the corresponding layers)
 #define SYMB_LAYER 40

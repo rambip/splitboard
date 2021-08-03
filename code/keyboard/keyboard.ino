@@ -65,5 +65,5 @@ void loop()
     // send the report via usb
     SEND_KEYS(hid_report);
     // TODO: debug
-    // send_keys_ble(hid_report);
+    send_keys_ble(hid_report);
 }
