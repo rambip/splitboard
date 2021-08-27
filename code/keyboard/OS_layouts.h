@@ -104,6 +104,16 @@ KEY_END 0x4f
 #define C_DOWN 0x94
 #define C_UP 0x95
 
+#define C_F1 0x81
+#define C_F2 0x82
+#define C_F3 0x83
+#define C_F4 0x84
+#define C_F5 0x85
+#define C_F6 0x86
+#define C_F7 0x87
+#define C_F8 0x88
+#define C_F9 0x89
+#define C_F10 0x8a
 // latin1 to azerty
 
 const short _azerty_map[256] PROGMEM = {
@@ -210,7 +220,7 @@ const short _azerty_map[256] PROGMEM = {
     0x26|ALTGR,    // ^
     0x25,    // _
     //0x6...
-    0x24|ALTGR|SPACE,// `
+    0x24|ALTGR,// `
     0x14,          // a
     0x05,          // b
     0x06,          // c
@@ -244,17 +254,17 @@ const short _azerty_map[256] PROGMEM = {
     0x1f|ALTGR,    // ~
     0,    // DEL
     //0x8...
-    0x24|ALTGR, // ` (dead grave, custom)
-    0x2f, // ^ (dead circumflex, custom)
-    0x0, // 0x82
-    0x0, // 0x83
-    0x0, // 0x84
-    0x0, // 0x85
-    0x0, // 0x86
-    0x0, // 0x87
-    0x0, // 0x88
-    0x0, // 0x89
-    0x0, // 0x8a
+    0x2f, // ` (dead grave, custom)
+    0x3a, // F1
+    0x3b, // F2
+    0x3c, // F3
+    0x3d, // F4
+    0x3e, // F5
+    0x3f, // F6
+    0x40, // F7
+    0x41, // F8
+    0x42, // F9
+    0x43, // F10
     0x0, // 0x8b
     0x0, // 0x8c
     0x0, // 0x8d
@@ -262,7 +272,7 @@ const short _azerty_map[256] PROGMEM = {
     0x0, // 0x8f
     //0x9...
     0x47, // Home
-    0x4f, // End
+    0x49, // End
     0x4f, // Right
     0x50, // Left
     0x51, // Down

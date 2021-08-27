@@ -14,4 +14,4 @@ extern bool matrix[12*4];
 
 void setup_i2c();
 byte getLine(int adress, uint8_t line); 
-void read_keys() ;
+int read_keys() ;

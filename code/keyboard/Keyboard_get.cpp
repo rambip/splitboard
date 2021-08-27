@@ -82,7 +82,9 @@ byte getLine(int adress, uint8_t line) // return the byte 00abcdef
     return ~((buff0 & 0b11000000) >> 6 | (buff1 & 0b00001111) << 2);
 }
 
-void read_keys() {
+int read_keys() {
+    int total_keys_pressed = 0; 
+
     // for each line, get the data from the 2 sides
     for (int y=0; y<4; y++)
     {
@@ -94,12 +96,15 @@ void read_keys() {
         {
             bool pressed = (left >> (5-x)) & 1;
             matrix[y*12+x] = pressed;
+            total_keys_pressed += pressed;
         }
 
         for (int x=0; x<6; x++)
         {
             bool pressed = (right >> (5-x)) & 1;
             matrix[y*12+6+x] = pressed;
+            total_keys_pressed += pressed;
         }
     }
+    return total_keys_pressed;
 }

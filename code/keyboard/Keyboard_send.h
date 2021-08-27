@@ -49,6 +49,8 @@ static const uint8_t _hidReportDescriptor[] PROGMEM = {
 };
 
 
+extern const byte _release_keys[8];
+
 
 void setup_hid();
 
