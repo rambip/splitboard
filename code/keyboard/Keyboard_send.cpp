@@ -7,6 +7,11 @@ void setup_hid(){
 }
 
 
+void send_keys(byte report[8]) {
+    HID().SendReport(2, report, 8);
+}
+
+
 void char_to_report(unsigned char k, byte report[8]) {
     // fill the report for the usb with the right keys to send the character
     short code = pgm_read_word(&_azerty_map[k]);
@@ -123,16 +128,16 @@ void send_string(T* adress) {
         {
             // char need combination of keys
             case DEAD_GRAVE:
-                SEND_KEYS(_dead_grave_keys);
+                send_keys(_dead_grave_keys);
                 break;
             case DEAD_CIRCUMFLEX:
-                SEND_KEYS(_dead_circumflex_keys);
+                send_keys(_dead_circumflex_keys);
                 break;
             case DEAD_DIAERESIS:
-                SEND_KEYS(_dead_diaeresis_keys);
+                send_keys(_dead_diaeresis_keys);
                 break;
             case LOCK:
-                SEND_KEYS(_caps_lock_keys);
+                send_keys(_caps_lock_keys);
                 break;
         }
 
@@ -149,17 +154,17 @@ void send_string(T* adress) {
         keys[0] = (shift << 1) | (altgr << 6);
         keys[2] = scancode;
 
-        SEND_KEYS(keys);
+        send_keys(keys);
 
         if ((code & 0x0f00) == LOCK){
-            SEND_KEYS(_caps_lock_keys); // turn off capslock
+            send_keys(_caps_lock_keys); // turn off capslock
         }
 
 
-        if (code & SPACE){ SEND_KEYS(_space_keys); }
+        if (code & SPACE){ send_keys(_space_keys); }
 
         // TODO: do same for ble
         // realease only if needed ?
-        SEND_KEYS(_release_keys);
+        send_keys(_release_keys);
     }
 }

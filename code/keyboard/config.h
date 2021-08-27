@@ -69,8 +69,6 @@ const char _func_layer[36] PROGMEM =
 */
 
 
-// TODO: ctrl+maj ?
-
 // layering keys (to access the corresponding layers)
 #define SYMB_LAYER 40
 #define SHIFT_LAYER 41

@@ -22,14 +22,15 @@ void loop()
     int n_keys_pressed = read_keys();
 
     // look if layer key pressed (bottom keys)
-    bool layer_key = false;
-    for (int i = 37; i <= 46; i++) { layer_key |= matrix[i];};
+    bool layer_key = matrix[SYMB_LAYER] || matrix[NUM_LAYER] || matrix[SHIFT_LAYER]
+                     || matrix[FUNC_LAYER] || matrix[MM_LAYER];
 
     if ( n_keys_pressed > 0 && last_time_layer_key && !layer_key) {
         // if I just released a layer key, I wait until all keys are released.
         // Otherwise when I release a layer key, the symbol from the base layer
         // could be treagered.
-        SEND_KEYS(_release_keys);
+        send_keys(_release_keys);
+        send_keys_ble(_release_keys);
         while (n_keys_pressed > 0) {
             n_keys_pressed = read_keys();
         }
@@ -44,7 +45,7 @@ void loop()
     // empty usb-hid report that we will send to the OS
     byte hid_report[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
-    // space is a special key: it is the only key that is not in the "layers"
+    // space is a special char: it is the only key that is not in the "layers"
     if (matrix[SPACE]){ // Space
         if (matrix[SHIFT_LAYER]) char_to_report('_', hid_report);
         else                     char_to_report(' ', hid_report);
@@ -85,6 +86,6 @@ void loop()
     );
 
     // send the report via usb
-    SEND_KEYS(hid_report);
+    send_keys(hid_report);
     send_keys_ble(hid_report);
 }

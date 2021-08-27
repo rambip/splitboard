@@ -3,9 +3,6 @@
 #include "Keyboard_get.h" // to get the global variable matrix
 #include "config.h" // to know if OS defined with azerty or qwerty
 
-// send report to usb
-#define SEND_KEYS(x) HID().SendReport(2, x, 8)
-
 #ifdef AZERTY
 #define OS_LAYOUT_MAP _azerty_map
 #endif
@@ -53,6 +50,8 @@ extern const byte _release_keys[8];
 
 
 void setup_hid();
+
+void send_keys(byte report[8]);
 
 void char_to_report(unsigned char k, byte report[8]);
 void layer_to_report(char* layout_for_layer, byte report[8]);
