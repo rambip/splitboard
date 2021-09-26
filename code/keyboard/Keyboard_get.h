@@ -12,6 +12,14 @@
 // table of booleans storing the state of the keys
 extern bool matrix[12*4];
 
+enum RotaryEncoderSignal {
+    REN=10,
+    RE1,
+    RE2,
+};
+
+extern RotaryEncoderSignal rotary_encoder;
+
 void setup_i2c();
 byte getLine(int adress, uint8_t line); 
 int read_keys() ;

@@ -1,7 +1,8 @@
 #include "Keyboard_get.h"
 
 bool matrix[48];
-
+RotaryEncoderSignal rotary_encoder;
+bool rotary_last_on_on;
 
 /*
  * MULTIPLEXER:
@@ -72,6 +73,22 @@ byte getLine(int adress, uint8_t line) // return the byte 00abcdef
     byte buff1 = Wire.read();
     Wire.endTransmission();
 
+
+    if (adress == RIGHT_I2C) {
+        // dirty optimization: look if there is a rotary_encoder signal
+        bool s1 = (~buff0 & 0b00100000) != 0;
+        bool s2 = (~buff0 & 0b00010000) != 0;
+
+        if (s1 && !s2 && rotary_last_on_on) {
+            // on-on -> on-off: right rotation
+            rotary_encoder = RE1;
+        }
+        else if (s2 && !s1 && rotary_last_on_on) {
+            // on-on -> off-on : left rotation
+            rotary_encoder = RE2;
+        }
+        rotary_last_on_on = s1 && s2;
+    }
 
     // put together the 2 outputs:
     // return value = byte between 0b000000 and 0b111111

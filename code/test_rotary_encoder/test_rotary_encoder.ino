@@ -7,23 +7,23 @@
 /*
 
 left part:
-    - pin0 = all leds          [out]
-    - pin 1-3 = led rgb        [out]
-    - pin 4-5 = nothing
-    - pin 6-7 = 2 last columns [out]
+- pin0 = all leds          [out]
+- pin 1-3 = led rgb        [out]
+- pin 4-5 = nothing
+- pin 6-7 = 2 last columns [out]
 
-    - pin 8-12 = 4 first columns (reverse order) [out]
-    - pin 12-17 = lines (right order) [in]
+- pin 8-12 = 4 first columns (reverse order) [out]
+- pin 12-17 = lines (right order) [in]
 
 
 right part:
-    - pin 0 = all leds [out]
-    - pin 1-3 = led rgb [out]
-    - pin 4-5 = rotary encoder [in ?]
-    - pin 6-7 = 2 last columns [out]
+- pin 0 = all leds [out]
+- pin 1-3 = led rgb [out]
+- pin 4-5 = rotary encoder [in ?]
+- pin 6-7 = 2 last columns [out]
 
-    - pin 8-12 = 4 first columns (reverse order) [out]
-    - pin 12-17 = lines (right order) [in]
+- pin 8-12 = 4 first columns (reverse order) [out]
+- pin 12-17 = lines (right order) [in]
 */
 
 
@@ -37,24 +37,24 @@ byte matrix[12*4];
 
 
 void setup() {
-    Serial.begin(9600);
-    Wire.begin();
-    delay(50);
+Serial.begin(9600);
+Wire.begin();
+delay(50);
 
-    // 0 = output, 1 = input
-    Wire.beginTransmission(RIGHT_I2C);
-    Wire.write(0x06);
-    Wire.write(0b11000000);
-    Wire.endTransmission();
+// 0 = output, 1 = input
+Wire.beginTransmission(RIGHT_I2C);
+Wire.write(0x06);
+Wire.write(0b11000000);
+Wire.endTransmission();
 
-    Wire.beginTransmission(RIGHT_I2C);
-    Wire.write(0x07);
-    Wire.write(0b00001111);
-    Wire.endTransmission();
+Wire.beginTransmission(RIGHT_I2C);
+Wire.write(0x07);
+Wire.write(0b00001111);
+Wire.endTransmission();
 
-    // TODO: vérifier l'emplacement du rotary encoder
-    // récupérer les impulsions, check quelle fréquence il faut
-    // s'en servir pour passer de azerty -> qwerty -> [pad numérique ?]
+// TODO: vérifier l'emplacement du rotary encoder
+// récupérer les impulsions, check quelle fréquence il faut
+// s'en servir pour passer de azerty -> qwerty -> [pad numérique ?]
 }
 
 
@@ -63,49 +63,22 @@ void setup() {
 
 
 
-byte getLine(int adress, uint8_t line) // return the byte 00abcdef
-{
-    // set the line to high
-    Wire.beginTransmission(adress);
-    Wire.write(0x03);
-    uint8_t pin = 4 + line;
-    Wire.write(~ (1<<pin));
-    Wire.endTransmission();
-
-    // request state of 2 buffers
-    Wire.beginTransmission(adress);
-    Wire.write(0x00);
-    Wire.endTransmission();
-
-    Wire.requestFrom(adress, 1);
-    byte buff0 = Wire.read();
-    Wire.endTransmission();
-
-    Wire.beginTransmission(adress);
-    Wire.write(0x01);
-    Wire.endTransmission();
-
-    Wire.requestFrom(adress, 1);
-    byte buff1 = Wire.read();
-    Wire.endTransmission();
-
-
-    // put together the 2 outputs:
-    // return value = byte between 0b000000 and 0b111111
-
-    // we want = abdcef (state of keyboard on that line)
-    // buff0 = efxxxxxx
-    // buff1 = xxxxabcd
-    return ~((buff0 & 0b11000000) >> 6 | (buff1 & 0b00001111) << 2);
-}
 
 
 
 void loop() {
-    byte left = getLine(LEFT_I2C, 2);
-    byte right = getLine(RIGHT_I2C, 2);
+    Wire.beginTransmission(RIGHT_I2C);
+    Wire.write(0x00);
+    Wire.endTransmission();
 
-    Serial.print(left, BIN);
-    Serial.print("\t");
-    Serial.println(right, BIN);
+    Wire.requestFrom(RIGHT_I2C, 1);
+    byte buff = Wire.read();
+    Wire.endTransmission();
+
+    byte s1 = (~buff & 0b00100000) != 0;
+    byte s2 = (~buff & 0b01000000) != 0;
+
+    if (s1 || s2) { 
+        Serial.println(s1, BIN);
+    }
 }

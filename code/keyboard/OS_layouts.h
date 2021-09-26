@@ -116,7 +116,7 @@ KEY_END 0x4f
 #define C_F10 0x8a
 // latin1 to azerty
 
-const short _azerty_map[256] PROGMEM = {
+static const short _azerty_map[256] PROGMEM = {
     // 0x0...
     0x00,             // NUL
     0x00,             // SOH
@@ -392,7 +392,7 @@ const short _azerty_map[256] PROGMEM = {
 };
 
 
-const short _us_inter_map[256] PROGMEM = {
+static const short _us_inter_map[256] PROGMEM = {
     0x00,             // NUL
     0x00,             // SOH
     0x00,             // STX

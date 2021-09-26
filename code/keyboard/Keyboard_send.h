@@ -3,14 +3,12 @@
 #include "Keyboard_get.h" // to get the global variable matrix
 #include "config.h" // to know if OS defined with azerty or qwerty
 
-#ifdef AZERTY
-#define OS_LAYOUT_MAP _azerty_map
-#endif
+static short* KEYMAPS[2] = {
+    _azerty_map,
+    _us_inter_map,
+};
 
-#ifdef QWERTY
-#define OS_LAYOUT_MAP _qwerty_map
-#endif
-
+extern uint8_t current_keymap;
 
 static const uint8_t _hidReportDescriptor[] PROGMEM = {
 

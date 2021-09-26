@@ -5,7 +5,7 @@
 
 
 // os settings:
-#define AZERTY
+// #define AZERTY
 // #define QWERTY
 
 

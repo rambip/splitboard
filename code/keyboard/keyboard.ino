@@ -42,6 +42,19 @@ void loop()
     // update last layer key
     last_time_layer_key = layer_key;
 
+    if (rotary_encoder == RE2) {
+        // clockwise rotation
+        Serial.println("1");
+        current_keymap = 1;
+        rotary_encoder = REN;
+    }
+    if (rotary_encoder == RE1) {
+        // anticlockwise rotation
+        current_keymap = 0;
+        Serial.println("2");
+        rotary_encoder = REN;
+    }
+
     // empty usb-hid report that we will send to the OS
     byte hid_report[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
