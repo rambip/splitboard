@@ -99,4 +99,3 @@ https://wiki.osdev.org/USB_Human_Interface_Devices
 
 - [ ] convert all 3d modeling to .step
 - [ ] add links to documentation
-- [ ] code
