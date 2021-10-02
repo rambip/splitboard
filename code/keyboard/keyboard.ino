@@ -44,14 +44,12 @@ void loop()
 
     if (rotary_encoder == RE2) {
         // clockwise rotation
-        Serial.println("1");
         current_keymap = 1;
         rotary_encoder = REN;
     }
     if (rotary_encoder == RE1) {
         // anticlockwise rotation
         current_keymap = 0;
-        Serial.println("2");
         rotary_encoder = REN;
     }
 

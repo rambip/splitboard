@@ -2,7 +2,7 @@
 #include "OS_layouts.h"
 
 
-uint8_t current_keymap = 1;
+uint8_t current_keymap = 0;
 
 void setup_hid(){
     static HIDSubDescriptor node(_hidReportDescriptor, sizeof(_hidReportDescriptor));
@@ -15,9 +15,15 @@ void send_keys(byte report[8]) {
 }
 
 
+short get_key(unsigned char k) {
+    short* keymap = KEYMAPS[current_keymap];
+    return pgm_read_word(&keymap[k]);
+}
+
+
 void char_to_report(unsigned char k, byte report[8]) {
     // fill the report for the usb with the right keys to send the character
-    short code = pgm_read_word(&KEYMAPS[current_keymap][k]);
+    short code = get_key(k);
 
     if (code & 0x0f00)
     {
@@ -51,7 +57,8 @@ void layer_to_report(char* layout_for_layer, byte report[8]) {
         if (matrix[i]) {
             // if pressed, send corresponding char
             matrix[i] = false;
-            char_to_report(pgm_read_byte(&layout_for_layer[i]), report);
+            unsigned char k = pgm_read_byte(&layout_for_layer[i]);
+            char_to_report(k, report);
         }
     }
 }
@@ -120,7 +127,7 @@ void send_string(T* adress) {
     String str = String(adress); // attention pour les trop grosses strings
     for (int i=0; str[i]; i++)
     {
-        short code = pgm_read_word(&KEYMAPS[current_keymap][str[i]]);
+        short code = get_key(str[i]);
 
         // code on 16 bits.
         // - 4 first bits = modifiers (shift, altgr)

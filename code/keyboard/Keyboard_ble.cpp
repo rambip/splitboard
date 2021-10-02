@@ -15,10 +15,10 @@ void setup_ble() {
     no_error |= ble.reset();
 }
 
-//byte last_scancode_1 = 0;
+byte last_scancode_1 = 0;
 
 void send_keys_ble(byte report[8]) {
-    //if (report[2] == last_scancode_1) return;
+    if (report[2] == last_scancode_1) return;
 
     ble.print("AT+BLEKEYBOARDCODE=");
     for (int i=0; i<5; i++){
@@ -32,5 +32,5 @@ void send_keys_ble(byte report[8]) {
 
     ble.println();
 
-    //last_scancode_1 = report[2];
+    last_scancode_1 = report[2];
 }
