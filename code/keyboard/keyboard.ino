@@ -76,6 +76,7 @@ void loop()
 
     if (matrix[SHIFT_LAYER]) {
         matrix[SHIFT_LAYER] = false;
+        if (matrix[35]) { hid_report[0] = 0b00000010;};
         layer_to_report(_shift_layer, hid_report);
     }
 
